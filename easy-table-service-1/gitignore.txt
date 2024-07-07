@@ -1,0 +1,20 @@
+# Directories
+venv/
+env/
+build/
+
+*.egg-info/
+
+node_modules/
+
+
+# File formats
+*.pyc
+
+# Files
+.env
+text.txt
+.DS_Store
+.mypy_cache
+app.db
+app.log

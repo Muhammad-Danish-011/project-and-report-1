@@ -1,0 +1,73 @@
+<!-- category.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= category.name %> - EasyTableService</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <%- include('partials/header') %>
+
+    <main>
+        <h2 class="heading"><%= category.name %></h2>
+        <div class="products">
+            <% category.products.forEach(product => { %>
+                <div class="product">
+                    <h3 class="heading"><a href="/product/<%= product.name %>"><%= product.name %></a></h3>
+                    <img src="<%= product.image %>" alt="<%= product.name %>" class="img">
+                    <p> €<%= product.price %></p>
+                    <p><%= product.description %></p>
+                    <button class="add-to-basket" data-product-name="<%= product.name %>">Add to basket</button>
+                </div>
+            <% }); %>
+        </div>
+    </main>
+
+    <% include('partials/footer') %>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const addToBasketButtons = document.querySelectorAll('.add-to-basket');
+
+            addToBasketButtons.forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const productName = event.target.dataset.productName;
+
+                    fetch(`/add-to-basket/${encodeURIComponent(productName)}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ productName })
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            console.log('Product added to basket');
+                            updateBasketCount(); 
+                        } else {
+                            console.error('Failed to add product to basket');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error adding product to basket:', error);
+                    });
+                });
+            });
+
+            function updateBasketCount() {
+                fetch('/basket-count') 
+                .then(response => response.json())
+                .then(data => {
+                    document.querySelector('.basket a').textContent = `Basket (${data.basketCount})`;
+                })
+                .catch(error => {
+                    console.error('Error updating basket count:', error);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

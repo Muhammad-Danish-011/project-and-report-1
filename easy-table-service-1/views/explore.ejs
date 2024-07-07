@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <%- include('partials/header') %>
+
+    <main>
+        <h2 class="heading">Explore Our Categories</h2>
+        <div class="categories">
+            <% categories.forEach(category => { %>
+                <div class="category">
+                    <h3><a href="/category/<%= category.name %>"><%= category.name %></a></h3>
+                    <ul class="products">
+                        <% category.products.forEach(product => { %>
+                            <li>
+                                <h4><a href="/product/<%= product.id %>"><%= product.name %></a></h4>
+                                <p>€<%= product.price %></p>
+                                <img class="img" src="<%= product.image %>" alt="<%= product.name %>">
+                            </li>
+                        <% }); %>
+                    </ul>
+                </div>
+            <% }); %>
+        </div>
+    </main>
+
+    <%- include('partials/footer') %>
+
+    <script src="/scripts.js"></script>
+</body>
+</html>

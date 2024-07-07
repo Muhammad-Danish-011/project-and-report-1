@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <% include('partials/header') %>
+
+    <main>
+        <h2 class="heading">Checkout</h2>
+        <div class="basket">
+            <h3 class="heading">Your Basket</h3>
+            <ul class="heading">
+                <% Object.keys(basket).forEach(productName => { %>
+                    <% const product = getProductByName(productName); %>
+                    <li><%= product.name %> x <%= basket[productName] %> - $<%= (parseFloat(product.price.slice(1)) * basket[productName]).toFixed(2) %></li>
+                <% }); %>
+            </ul>
+            <p class="heading">Total Price: €<%= totalPrice.toFixed(2) %></p>
+            <button class="button"> <a class="heading" href="/thanks">Proceed to Checkout</a></button>
+           
+        </div>
+    </main>
+
+    <%- include('partials/footer') %>
+</body>
+</html>

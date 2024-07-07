@@ -1,0 +1,220 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-image: url('/images/background.jpg'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+header {
+    background: #333;
+    color: white;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+}
+
+
+header h1 {
+    margin: 0;
+    
+    align-items: center;
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.navbar ul li {
+    display: inline-block;
+    margin-right: 1em;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+main {
+    padding: 2em;
+}
+
+.categories, .products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+.category, .product {
+    border: 1px solid #ccc;
+    padding: 1em;
+    flex: 1 1 calc(33.333% - 1em);
+    box-sizing: border-box;
+    background-color: aliceblue;
+}
+.view-basket{
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background: linear-gradient(to right, #4CAF50, #45a049); 
+    color: rgb(255, 255, 255); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    transition: background-color 0.3s ease, transform 0.2s ease-out, box-shadow 0.2s ease;
+}
+.view-basket:hover {
+    background: linear-gradient(to right, #45a049, #4CAF50);
+    transform: translateY(-2px); 
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); 
+}
+
+.view-basket:active {
+    transform: translateY(0); 
+    box-shadow: none; 
+}
+
+@media (max-width: 768px) {
+    .view-basket {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+.add-to-basket{
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background: linear-gradient(to right, #4CAF50, #45a049); 
+    color: rgb(255, 255, 255); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    transition: background-color 0.3s ease, transform 0.2s ease-out, box-shadow 0.2s ease;
+}
+.add-to-basket:hover {
+    background: linear-gradient(to right, #45a049, #4CAF50);
+    transform: translateY(-2px); 
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); 
+}
+
+.add-to-basket:active {
+    transform: translateY(0); 
+    box-shadow: none; 
+}
+
+@media (max-width: 768px) {
+    .add-to-basket {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+.button {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background: linear-gradient(to right, #4CAF50, #45a049); 
+    color: rgb(254, 255, 254); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    transition: background-color 0.3s ease, transform 0.2s ease-out, box-shadow 0.2s ease;
+}
+
+.button:hover {
+    background: linear-gradient(to right, #45a049, #4CAF50);
+    transform: translateY(-2px); 
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); 
+}
+
+.button:active {
+    transform: translateY(0); 
+    box-shadow: none; 
+}
+
+@media (max-width: 768px) {
+    .button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: -1em;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    z-index:-50;
+}
+.heading{
+        color: #ffffff;
+}
+.img{
+        width: 40%;
+        height: auto;
+}
+
+.explore-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+    
+  }
+  
+  .welcome-message {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .video-container {
+    flex: 1;
+    text-align: right;
+    margin-top: 20px;
+  }
+  
+  .video-container video {
+    max-width: 100%;
+    height: auto;
+  }
+  .heading1{
+    font: bold;
+    color: #ffffff;
+    font: 5em sans-serif;
+  
+  }
+  .heading2{
+    font: bold;
+    font: 2em sans-serif;
+    color: #ffffff;
+  }
+  .heading3{
+  
+    color: #ffffff;
+   margin-right:20px ;
+  }
+  .welcome-message{
+    margin-top: -10%;
+  }

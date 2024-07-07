@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basket - EasyTableService</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <%- include('partials/footer') %>
+
+    <main>
+        <h2 class="heading">Your Basket</h2>
+        <div class="basket">
+            <h3 class="heading">Items in your basket:</h3>
+            <ul class="heading">
+                <% productsInBasket.forEach(product => { %>
+                    <li><%= product.name %> x <%= product.quantity %> - €<%= product.totalPrice %></li>
+                <% }); %>
+            </ul>
+            <div class="basket-buttons">
+                <a href="/checkout" class="button">Proceed to Checkout</a>
+                <a href="/" class="button">Select More</a>
+            </div>
+        </div>
+    </main>
+
+    <%- include('partials/footer') %>
+</body>
+</html>

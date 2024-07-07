@@ -1,0 +1,71 @@
+<!-- product.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= product.name %> - EasyTableService</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <% include('partials/header') %>
+
+    <main>
+        <div class="product-details">
+            <h2 class="heading"><%= product.name %></h2>
+            <img src="<%= product.image %>" alt="<%= product.name %>" class="img">
+            <p class="heading">€<%= product.price %></p>
+            <p class="heading"><%= product.description %></p>
+            <button class="add-to-basket" data-product-name="<%= product.name %>">Add to basket</button>
+            <button class="view-basket">View Basket</button>
+        </div>
+    </main>
+    <%- include('partials/footer') %>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const addToBasketButton = document.querySelector('.add-to-basket');
+            const viewBasketButton = document.querySelector('.view-basket');
+
+            addToBasketButton.addEventListener('click', (event) => {
+                const productName = event.target.dataset.productName;
+
+                fetch(`/add-to-basket/${encodeURIComponent(productName)}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ productName })
+                })
+                .then(response => {
+                    if (response.ok) {
+                        console.log('Product added to basket');
+                        updateBasketCount(); 
+                    } else {
+                        console.error('Failed to add product to basket');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error adding product to basket:', error);
+                });
+            });
+
+            viewBasketButton.addEventListener('click', () => {
+                window.location.href = '/basket';
+            });
+
+            function updateBasketCount() {
+                fetch('/basket-count') 
+                .then(response => response.json())
+                .then(data => {
+                    document.querySelector('.basket a').textContent = `Basket (${data.basketCount})`;
+                })
+                .catch(error => {
+                    console.error('Error updating basket count:', error);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
